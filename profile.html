@@ -273,6 +273,7 @@
     if(isLoggedIn) {
       let user = JSON.parse($.cookie('user'));
       $('#username').html(user.username)
+      $("#profileLink").prop('href','profile.html?id='+user.id)
       // window.location.href = '/profile.html?id='+user.id;
       $(".login").hide();
       $(".loggedIn").show();

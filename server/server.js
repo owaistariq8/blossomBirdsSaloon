@@ -255,7 +255,7 @@ app.post('/updateService',upload.fields([
     }
   ]), async function(req, res) {
   let id = parseInt(req.body.id);
-  let name = req.body.sname;
+  let name = req.body.name;
   let description = req.body.description;
   let price = req.body.price;
 
@@ -299,7 +299,19 @@ app.post('/updateService',upload.fields([
         let user = results[0]; 
         let updateQuery = `UPDATE ${SERVICE_TABLE_NAME} SET name='${name}'`;
         updateQuery+=`,description='${description}',price='${price}'`;
-        updateQuery+=`,img1='${img1}',img2='${img2}',img3='${img3}',img4='${img4}'  WHERE id='${id}'`;
+
+        if(img1 && img1!="")
+          updateQuery+=`,img1='${img1}'`;
+        
+        if(img2 && img2!="")
+          updateQuery+=`,img2='${img2}'`;
+
+        if(img3 && img3!="")
+          updateQuery+=`,img3='${img3}'`;
+
+        if(img4 && img4!="")
+          updateQuery+=`,img4='${img4}'`;
+            
         console.log(updateQuery);
         
         con.query(updateQuery, function(error, results) {
@@ -502,7 +514,20 @@ app.post('/updateProduct',upload.fields([
         let user = results[0]; 
         let updateQuery = `UPDATE ${PRODUCT_TABLE_NAME} SET name='${name}'`;
         updateQuery+=`,description='${description}',price='${price}'`;
-        updateQuery+=`,img1='${img1}',img2='${img2}',img3='${img3}',img4='${img4}'  WHERE id='${id}'`;
+
+
+        if(img1 && img1!="")
+          updateQuery+=`,img1='${img1}'`;
+        
+        if(img2 && img2!="")
+          updateQuery+=`,img2='${img2}'`;
+
+        if(img3 && img3!="")
+          updateQuery+=`,img3='${img3}'`;
+
+        if(img4 && img4!="")
+          updateQuery+=`,img4='${img4}'`;
+        
         console.log(updateQuery);
         
         con.query(updateQuery, function(error, results) {

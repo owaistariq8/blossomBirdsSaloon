@@ -262,6 +262,7 @@
     if(isLoggedIn) {
       let user = JSON.parse($.cookie('user'));
       $('#username').html(user.username)
+      $("#profileLink").prop('href','profile.html?id='+user.id)
       // window.location.href = '/profile.html?id='+user.id;
       $(".login").hide();
       $(".loggedIn").show();
@@ -284,6 +285,7 @@
     $(".navLinks").on("click",function(){
       console.log('clicked')
       let id = $(this).attr('id');
+      console.log(id,$(this).attr('href'));
       if(id=='logout')
         logout()
       else  
@@ -344,7 +346,6 @@
 
         const formData = new FormData();
         let img1 = $("#img1").prop('files')[0];
-        console.log($("#img1"),img1);
         let img2 = $("#img2").prop('files')[0];
         let img3 = $("#img3").prop('files')[0];
         let img4 = $("#img4").prop('files')[0];
