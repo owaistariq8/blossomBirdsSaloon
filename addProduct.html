@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
   <script src="js/form-validation.js"></script>
+  
   <link rel="stylesheet" href="css/form-validation.css" >
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css'>
@@ -314,6 +315,10 @@
             $('#description').val(product.description);
             $('#price').val(product.price);
             $('.id').val(product.id)
+            product.img1 = product.img1.replace(/\\/g, '/');
+            product.img2 = product.img2.replace(/\\/g, '/');
+            product.img3 = product.img3.replace(/\\/g, '/');
+            product.img4 = product.img4.replace(/\\/g, '/');
             let image1 = JSON.parse(product.img1);
             let image2 = JSON.parse(product.img2);
             let image3 = JSON.parse(product.img3);

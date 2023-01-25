@@ -357,6 +357,7 @@
           $('#password').val(profileUser.password);
           $('.fullName').html(first_name+' '+last_name)
           $('.id').val(profileUser.id)
+          profileUser.image = profileUser.image.replace(/\\/g, '/');
           let image = JSON.parse(profileUser.image);
           console.log(image);
 

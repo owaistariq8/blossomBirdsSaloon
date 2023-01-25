@@ -75,7 +75,7 @@ app.post('/signup', (req, res) => {
         let phoneNumber = req.body.phonenumber
         let email = req.body.email;
         let address = req.body.address;
-        var insertQuery = " INSERT INTO "+USER_TABLE_NAME+" (username,email,password,phone_number,address,accessToken) VALUES ('"+userName+"', '"+email+"','"+hashPassword+"','"+phoneNumber+"','"+address+"',NULL)";
+        let insertQuery = " INSERT INTO "+USER_TABLE_NAME+" (username,email,password,phone_number,address,accessToken) VALUES ('"+userName+"', '"+email+"','"+hashPassword+"','"+phoneNumber+"','"+address+"',NULL)";
 
         con.query(insertQuery, function (err, result) {
           if (err){

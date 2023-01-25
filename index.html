@@ -331,6 +331,7 @@
             let servicesHtml = `<div class="card-group col-lg-11 ">`;
             let count = 0;
             services.forEach((val,index)=>{
+              val.img1 = val.img1.replace(/\\/g, '/');
               let image = JSON.parse(val.img1);
               console.log(count,count>0 && count%3==0)
               if(count>0 && count%3==0){
@@ -351,6 +352,7 @@
 
               count++
             });
+
             servicesHtml+=`</div>`;
             $(".servicesContainer").html(servicesHtml);
 
@@ -361,6 +363,7 @@
             let productsHtml = `<div class="card-group col-lg-11 ">`;
             let count = 0;
             products.forEach((val,index)=>{
+              val.img1 = val.img1.replace(/\\/g, '/');
               let image = JSON.parse(val.img1);
               console.log(count,count>0 && count%3==0)
               if(count>0 && count%3==0){

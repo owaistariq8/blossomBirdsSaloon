@@ -346,9 +346,13 @@
           $('.description').html(service.description);
           $('.servicePrice').html('Rs '+service.price);
           $('.id').val(service.id)
+           service.img1 = service.img1.replace(/\\/g, '/');
           let image1 = JSON.parse(service.img1);
+           service.img2 = service.img2.replace(/\\/g, '/');
           let image2 = JSON.parse(service.img2);
+           service.img3 = service.img3.replace(/\\/g, '/');
           let image3 = JSON.parse(service.img3);
+           service.img4 = service.img4.replace(/\\/g, '/');
           let image4 = JSON.parse(service.img4);
           console.log('server/'+image1.path);
           $(".img1").prop('src','server/'+image1.path);

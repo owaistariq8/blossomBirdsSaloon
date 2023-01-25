@@ -319,6 +319,11 @@
             $('#description').val(service.description);
             $('#price').val(service.price);
             $('.id').val(service.id)
+            service.img1 = service.img1.replace(/\\/g, '/');
+            service.img2 = service.img2.replace(/\\/g, '/');
+            service.img3 = service.img3.replace(/\\/g, '/');
+            service.img4 = service.img4.replace(/\\/g, '/');
+
             let image1 = JSON.parse(service.img1);
             let image2 = JSON.parse(service.img2);
             let image3 = JSON.parse(service.img3);
