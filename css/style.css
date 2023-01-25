@@ -1,0 +1,305 @@
+
+.contact-body{
+    background: linear-gradient(90deg,#0e3959 0%, #0e3959 30%,#03a9f5 30%,#03a9f5 100%);
+    margin: 0;
+    padding: 0;
+}
+.contactus{
+    position: relative;
+    width: 100%;
+    padding: 40px 0px;
+}
+
+footer {
+    padding-top: 1px;
+}
+
+.signupform{
+    width: 300px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0.3);
+    background: #fff;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 10%;
+    background-repeat: no-repeat;
+    
+    background-position: center;
+}
+
+.signupform h1{
+    color:black;
+    margin-bottom: 30px;
+
+}
+
+.contactus .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: 2em;
+    font-size: 2em; 
+}
+
+.input-box{
+    border-radius: 20px;
+    padding: 10px ;
+    margin: 10px 0;
+    width: 90%;
+    border: 1px solid black;
+    outline: none;
+}
+button{
+    color: black;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.signup-btn{
+    background-color: #1c8adb;
+}
+
+twitter-btn{
+    background-color: #7dcee9;
+}
+a{
+    text-decoration: none;
+
+}
+hr{
+    margin-top: 20px;
+    width: 80%;
+}
+.or{
+    background: #fff;
+    width: 30px;
+    margin: -19px auto 10px;
+}
+img{
+    width: 70px;
+    margin-top: -50px;
+}
+
+.contactus .title h2 
+{
+
+    color: #fff;
+    font-weight:500 ;
+
+}
+
+.form{
+    grid-area: form;
+}
+.info{
+    grid-area: info;
+}
+.map{
+    grid-area: map;
+}
+
+.box{
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 5fr 4fr;
+    grid-template-areas: "form info"
+     "form map";
+     grid-gap: 20px;
+     margin-top: 20px;
+
+}
+ 
+.contact{
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 5px 35px rgba(0,0,0,0.15);
+}
+.contact h3{
+    color: #59450e;
+    font-weight: 500;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}  
+
+/* form */
+
+.formbox{
+    position: relative;
+    width: 100%;
+}
+
+.formbox .row50{
+display: flex;
+gap: 20px;
+}
+/* .row50{
+    width: 25%;
+} */
+.inputbox{
+    display: flex;
+     flex-direction: column; 
+      margin-bottom: 10px;
+     width: 50%; 
+}
+.formbox  .row100 .inputbox{
+    width: 100%;
+}
+.inputbox span{
+    color: #03a9f5;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.inputbox input{
+    padding: 10px;
+    font-size: 1.1em;
+    outline: none;
+    border: 1px solid black;
+}
+
+.inputbox textarea{
+
+    padding: 10px;
+    font-size: 1.1em;
+    outline: none;
+    border: 1px solid black;
+    min-height: 220px;
+    min-width: 700px;
+    margin-bottom: 10px;
+}
+
+.inputbox input[type="submit"]{
+    background: rgb(243, 55, 87);
+    border: none;
+    font-size: 1.1em;
+    max-width: 120px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 14px 15px;
+}
+.inputbox ::placeholder{
+    /*color: rgb(202, 17, 17);*/
+}
+
+/* info */
+
+.info{
+    background: #0e3959;
+}
+.info h3{
+    color: #fff;
+}
+.info .infobox div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.info .infobox div span{
+    min-width: 40px;
+    height: 40px;
+    color: #fff;
+    background: #1cb0f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.info .infobox div p{
+    color: #fff;
+    font-size: 1.1em;}
+
+.info .infobox div a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+.sci{
+    margin-top: 40px;
+    display: flex;
+}
+.sci li{
+    list-style: none;
+    margin-right: 15px;
+}
+
+.w-70 {
+    width: 70% !important;
+}
+.sci li a {
+    color: #fff;
+    font-size: 2em;
+    color: #ccc;
+}
+.map{
+    padding: 0;
+}
+.map iframe{
+    width: 100%;
+    height: 100%;
+}
+
+/* responsive design */
+
+@media(max-width:991px)
+{
+    body
+    {
+        background: #03a9f5;
+    }
+    .contactus{
+        padding: 20px;
+
+    }
+    .box
+     {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "form"
+        "info"
+        "map";
+    }
+
+    .map{
+        min-height: 300px;
+
+    }
+    .formbox .row50
+    {
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+    }
+    .inputbox
+    {
+        width: 100%;
+    }
+    .contact{
+        padding: 30px;
+    }
+    .map{
+        min-height: 300px;
+        padding: 0;
+    }
+}
+
+
+.btn-block{
+    position: center;
+    height: 50%;
+    width: 30%;
+    background-color: goldenrod;
+} 
+

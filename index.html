@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css'>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <title>Blossom Birds Salon</title>
+    
+  </head>
+  <body>
+    
+    <nav class="navbar navlinks-wrap  fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Blossom Bird Salon</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex" style="margin-left: 26%;">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" class="btn btn-secondary">
+              <span class="fa fa-search"></span>
+            </button>
+          </form>
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 25%;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="products.html"  >Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="services.html"  >Services</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+
+            <li class="nav-item loggedIn" >
+              <div class=" dropdown">
+                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                <span id="username"> 
+                  
+                </span>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item navLinks" id="profileLink" href="#">My Profile</a>
+                  <a class="dropdown-item navLinks adminLinks" href="addService.html" href="#">Add Service</a>
+                  <a class="dropdown-item navLinks adminLinks" href="addProduct.html" href="#">Add Product</a>
+                  <a class="dropdown-item navLinks" href="#" id="logout">Logout</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item login" >
+              <a class="nav-link"  href="login.html">SignIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      
+      <!-- carousal -->
+
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img  height="600" width="300"class="d-block w-100" src="images/pic1.jpeg" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img  height="600" width="300" class="d-block w-100" src="images/pic2.jpeg" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img height="600" width="300"  class="d-block w-100" src="images/pic3.jpeg" alt="Third slide">
+          </div>
+          <div class="carousel-item">
+            <img height="600" width="300"  class="d-block w-100" src="images/pic4.jpeg" alt="Third slide">
+          </div>
+          <div class="carousel-item">
+            <img height="600" width="300"  class="d-block w-100" src="images/pic5.jpeg" alt="Third slide">
+          </div>
+          <div class="carousel-item">
+            <img height="600" width="300"  class="d-block w-100" src="images/pic6.jpeg" alt="Third slide">
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 3%;padding-left: 14px;">Services</h3>
+      <!-- cards -->
+      <div class="servicesContainer">
+      </div>
+      <h3 style="margin-top: 3%;padding-left: 14px;">Products</h3>
+      <!-- cards -->
+      <div class="productsContainer">
+      </div>
+     <!--  <div class="col text-center" style="margin-top: 10px;">
+        <a href="services.html" class="btn btn-info">Show More</a>
+      </div> -->
+      <div class="about-section">
+        <h1>About Us</h1>
+        <p>Blossom birds salon here to serve you and  give you great beauty treatment</p>
+        
+      </div>
+
+      <h2 style="text-align:center">Our Team</h2>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="images/g2.jpg" alt="Jane" style="width:100%">
+            <div class="container">
+              <h2>Aniqa Sharafat</h2>
+              <p class="title">Web developer</p>
+              <p>My name is Hafiza Aniqa Sharafat. I am a <b>Front-End</b> developer </p>
+              <p>aniqasharafat2@gmail.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <img src="images/g1.jpg" alt="Mike" style="width:100%">
+            <div class="container">
+              <h2>Aqsa Azam</h2>
+              <p class="title">Web developer</p>
+              <p>It's me Aqsa azam.  I am a <b>Back-End</b> developer </p>
+              <p>aqsaazam2@gmail.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="card">
+            <img src="images/g3.jpg" alt="John" style="width:100%">
+            <div class="container">
+              <h2>Rimsha Aziz</h2>
+              <p class="title">Web Developer</p>
+              <p>Myself Rimsha Aziz . I am working on <b>Database </b></p>
+              <p>rimshaaziz2@gmail.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-light text-muted" style="padding-top: 1px;">
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fa fa-gem me-3"></i>Blosom Bird
+            </h6>
+            <p>
+              We are a Multi grant-winning Beauty salon, situated in Lahore, Pakistan. Our great group of staff and specialists are accessible to enable you to feel good and quiet in our wonderful salon.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Products
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Nail Polish</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Base</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Hair Pin</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Beauty Creams</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="signup.html" class="text-reset">Register</a>
+            </p>
+            <p>
+              <a href="about-us.html" class="text-reset">About Us</a>
+            </p>
+            <p>
+              <a href="feedback.html" class="text-reset">FeedBack</a>
+            </p>
+            <p>
+              <a href="contact.html" class="text-reset">Contact Us</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fa fa-home me-3"></i> Lahore, Pakistan</p>
+            <p>
+              <i class="fa fa-envelope me-3"></i>
+              info@blossombird.com
+            </p>
+            <p><i class="fa fa-phone me-3"></i> + 92 234 567 88</p>
+            <p><i class="fa fa-print me-3"></i> + 92 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="form5Example27" placeholder="Email address" class="form-control" />
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-success mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2022 Copyright:
+      <a class="text-reset fw-bold" href="/">Blosom Bird Salon</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+  <script type="text/javascript">
+    $(document).ready(function (){
+      let queryString = getUrlVars();
+      let isLoggedIn = $.cookie("loggedIn");
+      if(isLoggedIn) {
+        let user = JSON.parse($.cookie('user'));
+        $('#username').html(user.username)
+        $("#profileLink").prop('href','profile.html?id='+user.id)
+        // window.location.href = '/profile.html?id='+user.id;
+        $(".login").hide();
+        $(".loggedIn").show();
+        if(user.type=='admin') {
+          $('.adminLinks').show();
+        }
+        else {
+          $('.adminLinks').hide();
+        }
+      }
+      else{
+        $(".loggedIn").hide();
+        $(".login").show();
+      }
+
+      $(document).on('click',"#logout",function(){
+        $.removeCookie('user');
+        $.removeCookie('loggedIn');
+        window.location.href = '/'
+      })
+   
+    })
+
+    $(".navLinks").on("click",function(){
+      console.log('clicked')
+      let id = $(this).attr('id');
+      if(id=='logout')
+        logout()
+      else  
+        window.location.href = $(this).attr('href')
+
+    })
+
+    function logout() {
+      $.removeCookie('user');
+      $.removeCookie('loggedIn');
+      window.location.href = '/'
+    }
+    $.ajax({
+      type: "GET",
+      url: 'http://localhost:5000/home',
+      success: function(result){
+        console.log(result);
+        if(result && result.success=='yes') {
+          let services = result.data.services;
+          let products = result.data.products;
+          if(Array.isArray(services) && services.length>0) {
+            let servicesHtml = `<div class="card-group col-lg-11 ">`;
+            let count = 0;
+            services.forEach((val,index)=>{
+              let image = JSON.parse(val.img1);
+              console.log(count,count>0 && count%3==0)
+              if(count>0 && count%3==0){
+                servicesHtml+= `</div><div class="card-group col-lg-11">`;
+              }
+              servicesHtml+= `
+              <div class="card serviceCard">
+                <img class="card-img-top serviceImgHome" src="server/${image.path}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">${val.name}</h5>
+                  <p class="card-text"> ${val.description}</p>
+                </div>
+                <div class="card-footer">
+                  <a href="appointment.html?id=${val.id}" class="btn btn-primary">Read More</a>
+                </div>
+              </div>`;
+
+
+              count++
+            });
+            servicesHtml+=`</div>`;
+            $(".servicesContainer").html(servicesHtml);
+
+
+          }
+
+          if(Array.isArray(products) && products.length>0) {
+            let productsHtml = `<div class="card-group col-lg-11 ">`;
+            let count = 0;
+            products.forEach((val,index)=>{
+              let image = JSON.parse(val.img1);
+              console.log(count,count>0 && count%3==0)
+              if(count>0 && count%3==0){
+                productsHtml+= `</div><div class="card-group col-lg-11">`;
+              }
+              productsHtml+= `
+              <div class="card serviceCard">
+                <img class="card-img-top serviceImgHome" src="server/${image.path}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">${val.name}</h5>
+                  <p class="card-text"> ${val.description}</p>
+                </div>
+                <div class="card-footer">
+                  <a href="appointment.html?id=${val.id}" class="btn btn-primary">Read More</a>
+                </div>
+              </div>`;
+
+
+              count++
+            });
+            productsHtml+=`</div>`;
+            $(".productsContainer").html(productsHtml);
+          }
+        }
+        else {
+          alert(result.message)
+        }
+      },
+      dataType: 'json'
+    });
+
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+  </script>
+
+
+</html>
+
+<style>
+  .serviceImgHome {
+    height: 218px;
+  }
+  .serviceCard {
+    width: 326px;
+    height: 463px;
+    max-width: 33%;
+
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .title {
+    color: grey;
+  }
+
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .button:hover {
+    background-color: #555;
+  }
+
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+  .paddingNavLink {
+    padding-top : 10px;
+  }
+</style>

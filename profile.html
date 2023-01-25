@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css'>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+  <title>Blossom Birds Salon</title>
+  <title></title>
+</head>
+<body>
+    <nav class="navbar navlinks-wrap  fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Blossom Bird Salon</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 65%;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="products.html"  >Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="services.html"  >Services</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+
+            <li class="nav-item loggedIn" >
+              <div class=" dropdown">
+                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                <span id="username"> 
+                  
+                </span>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item navLinks" id="profileLink" href="#">My Profile</a>
+                  <a class="dropdown-item navLinks adminLinks" href="addService.html" href="#">Add Service</a>
+                  <a class="dropdown-item navLinks adminLinks" href="addProduct.html" href="#">Add Product</a>
+                  <a class="dropdown-item navLinks" href="#" id="logout">Logout</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item login" >
+              <a class="nav-link"  href="login.html">SignIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <hr>
+    <div class="container " style="padding-top:30px">
+      <div class="row">
+    		<div class="col-sm-10"><h1 class='fullName'></h1></div>
+      	<div class="col-sm-2"></div>
+      </div>
+      <div class="row">
+    		<div class="col-sm-3"><!--left col-->
+          <form id="avatarForm" method="post" enctype="multipart/form-data">
+            <div class="text-center">
+              <img src="images/profile.png"  class="avatar img-circle img-thumbnail" alt="avatar"/>
+              <input type="hidden" name="id" class="id">  
+              <input type="file" name='file' id="profilePicture" class="text-center center-block file-upload"/>
+            </div>
+          </form>
+        </div><!--/col-3-->
+      	<div class="col-sm-9">
+          <ul class="nav nav-tabs">
+            <li class="active" style="padding-right: 10px;"><a data-toggle="tab" href="#home">Home</a></li>
+            <li style="padding-right: 10px;"><a data-toggle="tab" href="#messages">Appointments</a></li>
+            <li style="padding-right: 10px;"><a data-toggle="tab" href="#settings">Purchases</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+              <hr>
+              <form class="form" id="profileForm">
+                <div class="form-group">
+                  <div class="col-xs-6">
+                      <label for="first_name"><h4>First name</h4></label>
+                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-6">
+                    <label for="last_name"><h4>Last name</h4></label>
+                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-6">
+                     <label for="phone"><h4>Phone #</h4></label>
+                      <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="enter phone number" title="enter your phone number if any.">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-6">
+                      <label for="email"><h4>Email</h4></label>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-6">
+                      <label for="password"><h4>Password</h4></label>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="address"><h4>Address</h4></label>
+                      <textarea  class="form-control" name="address" id="address" placeholder="Enter full address" ></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <input type="hidden" name="id" class="id">  
+                    <br>
+                    <a class="btn btn-lg btn-success" id='saveProfile' href="#">
+                      <i class="glyphicon glyphicon-ok-sign"></i> Save
+                    </a>
+                  </div>
+                </div>
+            	</form>
+              <hr>
+            </div><!--/tab-pane-->
+            <div class="tab-pane" id="messages">
+            </div><!--/tab-pane-->
+            <div class="tab-pane" id="settings">
+            	
+            </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+      </div><!--/row-->
+    </div>                                                 
+</body>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fa fa-gem me-3"></i>Blosom Bird
+          </h6>
+          <p>
+            We are a Multi grant-winning Beauty salon, situated in Lahore, Pakistan. Our great group of staff and specialists are accessible to enable you to feel good and quiet in our wonderful salon.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Nail Polish</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Base</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Hair Pin</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Beauty Creams</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="signup.html" class="text-reset">Register</a>
+          </p>
+          <p>
+            <a href="about-us.html" class="text-reset">About Us</a>
+          </p>
+          <p>
+            <a href="feedback.html" class="text-reset">FeedBack</a>
+          </p>
+          <p>
+            <a href="contact.html" class="text-reset">ContactUs</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fa fa-home me-3"></i> Lahore, Pakistan</p>
+          <p>
+            <i class="fa fa-envelope me-3"></i>
+            info@blossombird.com
+          </p>
+          <p><i class="fa fa-phone me-3"></i> + 92 234 567 88</p>
+          <p><i class="fa fa-print me-3"></i> + 92 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+    <form action="">
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center">
+        <!--Grid column-->
+        <div class="col-auto">
+          <p class="pt-2">
+            <strong>Sign up for our newsletter</strong>
+          </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-5 col-12">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="email" id="form5Example27" placeholder="Email address" class="form-control" />
+          </div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-auto">
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-success mb-4">
+            Subscribe
+          </button>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </form>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="/">Blosom Bird Salon</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
+<script type="text/javascript">
+  $(document).ready(function (){
+    let queryString = getUrlVars();
+    console.log(queryString);
+    let isLoggedIn = $.cookie("loggedIn");
+    if(isLoggedIn) {
+      let user = JSON.parse($.cookie('user'));
+      $('#username').html(user.username)
+      // window.location.href = '/profile.html?id='+user.id;
+      $(".login").hide();
+      $(".loggedIn").show();
+      if(user.type=='admin') {
+        $('.adminLinks').show();
+      }
+      else {
+        $('.adminLinks').hide();
+      }
+    }
+    else{
+      $(".loggedIn").hide();
+      $(".login").show();
+    }
+    $(".navLinks").on("click",function(){
+      console.log('clicked')
+      let id = $(this).attr('id');
+      if(id=='logout')
+        logout()
+      else  
+        window.location.href = $(this).attr('href')
+
+    })
+
+    function logout() {
+      $.removeCookie('user');
+      $.removeCookie('loggedIn');
+      window.location.href = '/'
+    }
+
+    $('#profilePicture').on('change', function () {
+      let file = this.files[0];
+      console.log(URL.createObjectURL(file));
+      $(".avatar").prop('src',URL.createObjectURL(file));
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("id", queryString['id']);
+
+      $.ajax({
+        type: "POST",
+        url: 'http://localhost:5000/updateProfilePictureUser',
+        data:formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(result){
+          console.log(result);
+          if(result && result.success=='yes') {
+            
+          }
+          else {
+            alert(result.message)
+          }
+        },
+        dataType: 'json'
+      });
+    });
+    $(document).on('click',"#logout",function(){
+      $.removeCookie('user');
+      $.removeCookie('loggedIn');
+      window.location.href = '/'
+    })
+  
+    $.ajax({
+      type: "GET",
+      url: 'http://localhost:5000/userProfile?id='+queryString['id'],
+      success: function(result){
+        console.log(result);
+        if(result && result.success=='yes') {
+          let profileUser = result.data;
+          let first_name = profileUser.first_name;
+          let last_name = profileUser.last_name;
+          if(!first_name)
+            first_name = ''
+          if(!last_name)
+            last_name = ''
+          $('#first_name').val(first_name);
+          $('#last_name').val(last_name);
+          $('#phone_number').val(profileUser.phone_number);
+          $('#email').val(profileUser.email);
+          $('#address').val(profileUser.address);
+          $('#password').val(profileUser.password);
+          $('.fullName').html(first_name+' '+last_name)
+          $('.id').val(profileUser.id)
+          let image = JSON.parse(profileUser.image);
+          console.log(image);
+
+          $(".avatar").prop('src','server/'+image.path);
+
+          if(profileUser.appointments) {
+            let appointmentHtml = '';
+            profileUser.appointments.forEach((appointment)=>{
+              appointmentHtml+= `<hr><p> <strong>Service </strong>: ${appointment.name} | <strong>Type</strong>: ${appointment.type} | <strong>Price</strong>: Rs ${appointment.price}  | <strong>Date</strong>: ${appointment.date_added} <span class='btn-warning btn cancelAppointment' id='${appointment.appointmentId}'> cancel</span> </p><hr>`;
+            })
+            $('#messages').html(appointmentHtml);
+          }
+
+        }
+        else {
+          alert(result.message)
+        }
+      },
+      dataType: 'json'
+    });
+
+    
+    $(document).on('click','.cancelAppointment',function(){
+      console.log('clicked');
+      let appointmentId = $(this).attr('id');
+      console.log(appointmentId)
+      $.ajax({
+        type: "GET",
+        url: 'http://localhost:5000/cancelAppointment?id='+appointmentId,
+        data: $("#profileForm").serialize(),
+        success: function(result){
+          console.log(result);
+          if(result && result.success=='yes') {
+            window.location.reload();
+          }
+          else {
+            alert(result.message)
+          }
+        },
+        dataType: 'json'
+      });
+    })
+    $(document).on('click','#saveProfile',function(){
+      console.log('clicked');
+      $.ajax({
+        type: "POST",
+        url: 'http://localhost:5000/updateUserProfile',
+        data: $("#profileForm").serialize(),
+        success: function(result){
+          console.log(result);
+          if(result && result.success=='yes') {
+            window.location.reload();
+          }
+          else {
+            alert(result.message)
+          }
+        },
+        dataType: 'json'
+      });
+    })
+  })
+
+  function getUrlVars()
+  {
+      var vars = [], hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++)
+      {
+          hash = hashes[i].split('=');
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+      }
+      return vars;
+  }
+</script>
+</html>
+

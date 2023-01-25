@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <script src="js/form-validation.js"></script>
+  
+  <link rel="stylesheet" href="css/form-validation.css" >
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css'>
+
+  
+  <title>Blossom Birds Salon</title>
+  <title></title>
+</head>
+<body>
+    <nav class="navbar navlinks-wrap  fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Blossom Bird Salon</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 75%;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="products.html"  >Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="services.html"  >Services</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+
+            <li class="nav-item loggedIn" >
+              <div class=" dropdown">
+                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                <span id="username"> 
+                  
+                </span>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item navLinks" id="profileLink" href="#">My Profile</a>
+                  <a class="dropdown-item navLinks adminLinks" href="addService.html" href="#">Add Service</a>
+                  <a class="dropdown-item navLinks adminLinks" href="addProduct.html" href="#">Add Product</a>
+                  <a class="dropdown-item navLinks" href="#" id="logout">Logout</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item login" >
+              <a class="nav-link"  href="login.html">SignIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <hr>
+    <div class="container " >
+      <div class="row" style="padding-top:30px">
+        <h3>Add Service</h3>
+        <form class="form" id="serviceForm" method="post" enctype="multipart/form-data">
+          <div class="col-sm-12"><!--left col-->
+            <div class="rowImg">
+              <div class="columnImg">
+                <img src="images/hair.jpg"  class="avatar img-thumbnail"  alt="avatar"/>
+                <input type="file" name='img1' id='img1'  class="text-center center-block file-upload servicePicture"/>
+              </div>
+              <div class="columnImg">
+                <img src="images/hair.jpg"  class="avatar img-thumbnail"  alt="avatar"/>
+                <input type="file" name='img2' id='img2'  class="text-center center-block file-upload servicePicture"/>
+              </div>
+              <div class="columnImg">
+                <img src="images/hair.jpg"  class="avatar img-thumbnail"  alt="avatar"/>
+                <input type="file" name='img3' id='img3'  class="text-center center-block file-upload servicePicture"/>
+              </div>
+              <div class="columnImg">
+                <img src="images/hair.jpg"  class="avatar img-thumbnail"  alt="avatar"/>
+                <input type="file" name='img4' id='img4'  class="text-center center-block file-upload servicePicture"/>
+              </div>
+            </div>
+          </div><!--/col-3-->
+          <div class="col-sm-12">
+              <div class="form-group">
+                <div class="col-xs-12">
+                    <label for="sname"><h4>Service Name</h4></label>
+                    <input type="text" class="form-control" name="sname" id="sname" placeholder="service name" title="">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                    <label for="price"><h4>Price</h4></label>
+                    <input type="number" class="form-control" name="price" id="price" placeholder="price" title="">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <label for="description"><h4>Description</h4></label>
+                    <textarea  class="form-control" name="description" id="description" placeholder="Enter full description" ></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <input type="hidden" name="id" class="id">  
+                  <br>
+                  <a class="btn btn-info" id='saveService' href="#">
+                     Save
+                  </a>
+                </div>
+              </div>
+          </div><!--/col-9-->
+        </form>
+      </div><!--/row-->
+    </div>                                                 
+</body>
+<style type="text/css">
+.columnImg {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.rowImg::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fa fa-gem me-3"></i>Blosom Bird
+          </h6>
+          <p>
+            We are a Multi grant-winning Beauty salon, situated in Lahore, Pakistan. Our great group of staff and specialists are accessible to enable you to feel good and quiet in our wonderful salon.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Nail Polish</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Base</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Hair Pin</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Beauty Creams</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="signup.html" class="text-reset">Register</a>
+          </p>
+          <p>
+            <a href="about-us.html" class="text-reset">About Us</a>
+          </p>
+          <p>
+            <a href="feedback.html" class="text-reset">FeedBack</a>
+          </p>
+          <p>
+            <a href="contact.html" class="text-reset">ContactUs</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fa fa-home me-3"></i> Lahore, Pakistan</p>
+          <p>
+            <i class="fa fa-envelope me-3"></i>
+            info@blossombird.com
+          </p>
+          <p><i class="fa fa-phone me-3"></i> + 92 234 567 88</p>
+          <p><i clblossomass="fa fa-print me-3"></i> + 92 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+    <form action="">
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center">
+        <!--Grid column-->
+        <div class="col-auto">
+          <p class="pt-2">
+            <strong>Sign up for our newsletter</strong>
+          </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-5 col-12">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="email" id="form5Example27" placeholder="Email address" class="form-control" />
+          </div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-auto">
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-success mb-4">
+            Subscribe
+          </button>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </form>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="/">Blosom Bird Salon</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
+<script type="text/javascript">
+  $(document).ready(function (){
+    let queryString = getUrlVars();
+    console.log(queryString);
+    let serviceId = queryString['id']
+    let isLoggedIn = $.cookie("loggedIn");
+    if(isLoggedIn) {
+      let user = JSON.parse($.cookie('user'));
+      $('#username').html(user.username)
+      // window.location.href = '/profile.html?id='+user.id;
+      $(".login").hide();
+      $(".loggedIn").show();
+      if(user.type=='admin') {
+        $('.adminLinks').show();
+      }
+      else {
+        $('.adminLinks').hide();
+        window.location.href = '/';
+
+      }
+    }
+    else{
+      $(".loggedIn").hide();
+      $(".login").show();
+      window.location.href = '/'
+
+    }
+
+    $(".navLinks").on("click",function(){
+      console.log('clicked')
+      let id = $(this).attr('id');
+      if(id=='logout')
+        logout()
+      else  
+        window.location.href = $(this).attr('href')
+
+    })
+
+    function logout() {
+      $.removeCookie('user');
+      $.removeCookie('loggedIn');
+      window.location.href = '/'
+    }
+
+    $(document).on('click',"#logout",function(){
+      $.removeCookie('user');
+      $.removeCookie('loggedIn');
+    })
+
+    $('.servicePicture').on('change', function () {
+      let file = this.files[0];
+      console.log(URL.createObjectURL(file));
+      $(this).parent().find('img').prop('src',URL.createObjectURL(file));
+    });
+    if(serviceId!=undefined && serviceId) {
+      $.ajax({
+        type: "GET",
+        url: 'http://localhost:5000/getService?id='+serviceId,
+        success: function(result){
+          console.log(result);
+          if(result && result.success=='yes') {
+            let service = result.service;
+            $('#sname').val(service.name);
+            $('#description').val(service.description);
+            $('#price').val(service.price);
+            $('.id').val(service.id)
+            let image1 = JSON.parse(service.img1);
+            let image2 = JSON.parse(service.img2);
+            let image3 = JSON.parse(service.img3);
+            let image4 = JSON.parse(service.img4);
+            console.log('server/'+image1.path);
+            $("#img1").parent().find('img').prop('src','server/'+image1.path);
+            $("#img2").parent().find('img').prop('src','server/'+image2.path);
+            $("#img3").parent().find('img').prop('src','server/'+image3.path);
+            $("#img4").parent().find('img').prop('src','server/'+image4.path);
+          }
+          else {
+            alert(result.message)
+          }
+        },
+        dataType: 'json'
+      });
+      $(document).on('click','#saveService',function(){
+
+        const formData = new FormData();
+        let img1 = $("#img1").prop('files')[0];
+        console.log($("#img1"),img1);
+        let img2 = $("#img2").prop('files')[0];
+        let img3 = $("#img3").prop('files')[0];
+        let img4 = $("#img4").prop('files')[0];
+        formData.append("img1", img1);
+        formData.append("img2", img2);
+        formData.append("img3", img3);
+        formData.append("img4", img4);
+        formData.append("id", serviceId);
+        formData.append("name", $("#sname").val());
+        formData.append("description", $("#description").val());
+        formData.append("price", $("#price").val());
+
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:5000/updateService',
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(result){
+            console.log(result);
+            if(result && result.success=='yes') {
+              window.location.reload();
+            }
+            else {
+              alert(result.message)
+            }
+          },
+          dataType: 'json'
+        });
+      })
+    }
+    else {
+      $(document).on('click','#saveService',function(){
+
+        const formData = new FormData();
+        let img1 = $("#img1").prop('files')[0];
+        console.log($("#img1"),img1);
+        let img2 = $("#img2").prop('files')[0];
+        let img3 = $("#img3").prop('files')[0];
+        let img4 = $("#img4").prop('files')[0];
+        formData.append("img1", img1);
+        formData.append("img2", img2);
+        formData.append("img3", img3);
+        formData.append("img4", img4);
+        formData.append("name", $("#sname").val());
+        formData.append("description", $("#description").val());
+        formData.append("price", $("#price").val());
+
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:5000/createService',
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(result){
+            console.log(result);
+            if(result && result.success=='yes') {
+              window.location.href = 'addService.html?id='+result.id;
+            }
+            else {
+              alert(result.message)
+            }
+          },
+          dataType: 'json'
+        });
+      })
+    }
+  
+    
+  })
+
+  function getUrlVars()
+  {
+      var vars = [], hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++)
+      {
+          hash = hashes[i].split('=');
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+      }
+      return vars;
+  }
+</script>
+</html>
+
+
+
+
+<style type="text/css">
+  .paddingNavLink {
+    padding-top : 10px;
+  }
+</style>

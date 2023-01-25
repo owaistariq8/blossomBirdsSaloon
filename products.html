@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="css/product.css" >
+
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <title>Blossom Birds Salon</title>
+    
+  </head>
+  <body>
+  	<nav class="navbar navlinks-wrap  fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Blossom Bird Salon</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 59%;">
+            <li class="nav-item">
+	            <a class="nav-link active" aria-current="page" href="products.html"  >Products</a>
+	          </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="services.html"  >Services</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+
+            <li class="nav-item loggedIn" >
+              <div class=" dropdown">
+                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                <span id="username"> 
+                  
+                </span>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item navLinks" id="profileLink" href="#">My Profile</a>
+                  <a class="dropdown-item navLinks adminLinks" href="addService.html" href="#">Add Service</a>
+                  <a class="dropdown-item navLinks adminLinks" href="addProduct.html" href="#">Add Product</a>
+                  <a class="dropdown-item navLinks" href="#" id="logout">Logout</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item login" >
+              <a class="nav-link"  href="login.html">SignIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <hr>
+		<div class="container" style="margin-top: 5%;">
+      <h3 style="margin-top: 3%;padding-left: 14px;">Products</h3>
+      <div class="productsContainer">
+      </div>
+    </div>
+	</body>
+	<!-- Footer -->
+	<footer class="text-center text-lg-start bg-light text-muted">
+	  <!-- Section: Links  -->
+	  <section class="">
+	    <div class="container text-center text-md-start mt-5">
+	      <!-- Grid row -->
+	      <div class="row mt-3">
+	        <!-- Grid column -->
+	        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+	          <!-- Content -->
+	          <h6 class="text-uppercase fw-bold mb-4">
+	            <i class="fa fa-gem me-3"></i>Blosom Bird
+	          </h6>
+	          <p>
+	            We are a Multi grant-winning Beauty salon, situated in Lahore, Pakistan. Our great group of staff and specialists are accessible to enable you to feel good and quiet in our wonderful salon.
+	          </p>
+	        </div>
+	        <!-- Grid column -->
+
+	        <!-- Grid column -->
+	        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+	          <!-- Links -->
+	          <h6 class="text-uppercase fw-bold mb-4">
+	            Products
+	          </h6>
+	          <p>
+	            <a href="#!" class="text-reset">Nail Polish</a>
+	          </p>
+	          <p>
+	            <a href="#!" class="text-reset">Base</a>
+	          </p>
+	          <p>
+	            <a href="#!" class="text-reset">Hair Pin</a>
+	          </p>
+	          <p>
+	            <a href="#!" class="text-reset">Beauty Creams</a>
+	          </p>
+	        </div>
+	        <!-- Grid column -->
+
+	        <!-- Grid column -->
+	        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+	          <!-- Links -->
+	          <h6 class="text-uppercase fw-bold mb-4">
+	            Useful links
+	          </h6>
+	          <p>
+	            <a href="signup.html" class="text-reset">Register</a>
+	          </p>
+	          <p>
+	            <a href="about-us.html" class="text-reset">About Us</a>
+	          </p>
+	          <p>
+	            <a href="feedback.html" class="text-reset">FeedBack</a>
+	          </p>
+	          <p>
+	            <a href="contact.html" class="text-reset">ContactUs</a>
+	          </p>
+	        </div>
+	        <!-- Grid column -->
+
+	        <!-- Grid column -->
+	        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+	          <!-- Links -->
+	          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+	          <p><i class="fa fa-home me-3"></i> Lahore, Pakistan</p>
+	          <p>
+	            <i class="fa fa-envelope me-3"></i>
+	            info@blossombird.com
+	          </p>
+	          <p><i class="fa fa-phone me-3"></i> + 92 234 567 88</p>
+	          <p><i class="fa fa-print me-3"></i> + 92 234 567 89</p>
+	        </div>
+	        <!-- Grid column -->
+	      </div>
+	      <!-- Grid row -->
+	    </div>
+	    <form action="">
+	      <!--Grid row-->
+	      <div class="row d-flex justify-content-center">
+	        <!--Grid column-->
+	        <div class="col-auto">
+	          <p class="pt-2">
+	            <strong>Sign up for our newsletter</strong>
+	          </p>
+	        </div>
+	        <!--Grid column-->
+
+	        <!--Grid column-->
+	        <div class="col-md-5 col-12">
+	          <!-- Email input -->
+	          <div class="form-outline mb-4">
+	            <input type="email" id="form5Example27" placeholder="Email address" class="form-control" />
+	          </div>
+	        </div>
+	        <!--Grid column-->
+
+	        <!--Grid column-->
+	        <div class="col-auto">
+	          <!-- Submit button -->
+	          <button type="submit" class="btn btn-success mb-4">
+	            Subscribe
+	          </button>
+	        </div>
+	        <!--Grid column-->
+	      </div>
+	      <!--Grid row-->
+	    </form>
+	  </section>
+	  <!-- Section: Links  -->
+
+	  <!-- Copyright -->
+	  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+	    © 2022 Copyright:
+	    <a class="text-reset fw-bold" href="/">Blosom Bird Salon</a>
+	  </div>
+	  <!-- Copyright -->
+	</footer>
+	<!-- Footer -->
+</html>
+
+  <script type="text/javascript">
+    $(document).ready(function (){
+      let queryString = getUrlVars();
+      let isLoggedIn = $.cookie("loggedIn");
+      if(isLoggedIn) {
+        let user = JSON.parse($.cookie('user'));
+        $('#username').html(user.username)
+        $("#profileLink").attr('href','profile.html?id='+user.id)
+        // window.location.href = '/profile.html?id='+user.id;
+        $(".login").hide();
+        $(".loggedIn").show();
+        if(user.type=='admin') {
+          $('.adminLinks').show();
+        }
+        else {
+          $('.adminLinks').hide();
+        }
+      }
+      else{
+        $(".loggedIn").hide();
+        $(".login").show();
+      }
+
+      $(document).on('click',"#logout",function(){
+        $.removeCookie('user');
+        $.removeCookie('loggedIn');
+        window.location.href = '/'
+      })
+   
+    })
+
+    $(".navLinks").on("click",function(){
+      console.log('clicked')
+      let id = $(this).attr('id');
+      if(id=='logout')
+        logout()
+      else  
+        window.location.href = $(this).attr('href')
+
+    })
+
+    function logout() {
+      $.removeCookie('user');
+      $.removeCookie('loggedIn');
+      window.location.href = '/'
+    }
+
+
+    $.ajax({
+      type: "GET",
+      url: 'http://localhost:5000/getProducts',
+      success: function(result){
+        console.log("result",result);
+        if(result && result.success=='yes') {
+          let products = result.products;
+          if(Array.isArray(products) && products.length>0) {
+            let productsHtml = `<div class="card-group col-lg-11 ">`;
+            let count = 0;
+            products.forEach((val,index)=>{
+              let image = JSON.parse(val.img1);
+              console.log(count,count>0 && count%3==0)
+              if(count>0 && count%3==0){
+                console.log('ajksdhkj')
+                productsHtml+= `</div><div class="card-group col-lg-11">`;
+              }
+              productsHtml+= `
+              <div class="card serviceCard">
+                <img class="card-img-top serviceImgHome" src="server/${image.path}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">${val.name}</h5>
+                  <p class="card-text"> ${val.description}</p>
+                </div>
+                
+              </div>`;
+
+
+              count++
+            });
+            productsHtml+=`</div>`;
+            $(".productsContainer").html(productsHtml);
+          }
+        }
+        else {
+          alert(result.message)
+        }
+      },
+      dataType: 'json'
+    });
+
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+  </script>
+
+  <style type="text/css">
+    .serviceImgHome {
+      height: 218px;
+    }
+    .serviceCard {
+      width: 326px;
+      height: 463px;
+      max-width: 33%;
+
+    }
+  </style>
+</html>
+
+<style type="text/css">
+  .paddingNavLink {
+    padding-top : 10px;
+  }
+</style>

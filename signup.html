@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="css/form-validation.css" >
+
+
+
+
+    <!-- JS -->
+    <script src="js/form-validation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <title>Blossom Birds Salon</title>
+    
+  </head>
+  <body  class="text-center">
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" >
+
+      <!-- Then put toasts within -->
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="mr-auto">Blossom Bird Saloon</strong>
+          <small></small>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">
+          Hello, world! This is a toast message.
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navlinks-wrap  fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Blossom Bird Salon</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex" style="margin-left: 26%;">
+          </form>
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 43%;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="products.html"  >Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="services.html"  >Services</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">SignIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container" >
+      <div class="card text-black" style="border-radius: 25px;">
+        <div class="card-body p-md-3">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+              <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign Up</p>
+
+              <form id='signpForm' class="mx-1 mx-md-4">
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-user fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" name="username" id="username" class="form-control" />
+                    <label class="form-label" for="username">Username</label>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="email" name="email" id="email" class="form-control" />
+                    <label class="form-label" for="email">Your Email</label>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-phone fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="tel" id="phone" name="phonenumber" class="form-control" />
+                    <label class="form-label" for="phone">Your Phone</label>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="password" name="password" id="password" class="form-control" />
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-key fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="password" id="rePassword" class="form-control" />
+                    <label class="form-label" for="rePassword">Repeat your password</label>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fa fa-address-card fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <textarea id="address" name="address" class="form-control"></textarea>
+                    <label class="form-label" for="address">Your Address</label>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                  <button type="button" id='signp' class="btn btn-primary btn-lg">Register</button>
+                </div>
+                <p>Already have an Account? <a href="login.html">Log in</a></p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fa fa-gem me-3"></i>Blosom Bird
+            </h6>
+            <p>
+              We are a Multi grant-winning Beauty salon, situated in Lahore, Pakistan. Our great group of staff and specialists are accessible to enable you to feel good and quiet in our wonderful salon.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Products
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Nail Polish</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Base</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Hair Pin</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Beauty Creams</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="services.html" class="text-reset">Services</a>
+            </p>
+            <p>
+              <a href="about-us.html" class="text-reset">About Us</a>
+            </p>
+            <p>
+              <a href="feedback.html" class="text-reset">FeedBack</a>
+            </p>
+            <p>
+              <a href="contact.html" class="text-reset">ContactUs</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fa fa-home me-3"></i> Lahore, Pakistan</p>
+            <p>
+              <i class="fa fa-envelope me-3"></i>
+              info@blossombird.com
+            </p>
+            <p><i class="fa fa-phone me-3"></i> + 92 234 567 88</p>
+            <p><i class="fa fa-print me-3"></i> + 92 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="form5Example27" placeholder="Email address" class="form-control" />
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-success mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2022 Copyright:
+      <a class="text-reset fw-bold" href="/">Blosom Bird Salon</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+  <script type="text/javascript">
+    $(document).ready(function (){
+      let isLoggedIn = $.cookie("loggedIn");
+      if(isLoggedIn) {
+        let user = JSON.parse($.cookie('user'));
+        window.location.href = '/profile.html?id='+user.id;
+      }
+      $(document).on('click','#signp',function(){
+        console.log('clicked');
+        let formData =  $('#signpForm').serialize()
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:5000/signup',
+          data: formData,
+          success: function(result){
+            console.log(result);
+            if(result && result.success=='yes') {
+              window.location.href = '/login.html'
+            }
+            else {
+              alert(result.message)
+            }
+          },
+          dataType: 'json'
+        });
+      })
+    })
+  </script>
+</html>
+
+<style type="text/css">
+  .paddingNavLink {
+    padding-top : 10px;
+  }
+</style>

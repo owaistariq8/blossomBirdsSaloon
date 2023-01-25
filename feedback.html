@@ -1,0 +1,39 @@
+<HTML>
+  <HEAD>
+    <TITLE> Drop Us a Feedback</TITLE>
+  </HEAD>
+  <BODY>
+    <H1> Drop Us a Feedback</H1>
+    <FORM action="mailto:simon.long@cit.ie" method="post" enctype="text/plain">
+      First Name : <INPUT type="text" name="firstname" placeholder="Enter name here">
+      Second Name : <INPUT type="text" name="secondname"  placeholder="Enter surname here">
+      <BR>
+      <BR>
+
+        E-Mail: <INPUT type="email" name="mail" placeholder="e-mail address">
+        PhoneNumber: <INPUT type="PhoneNumber" name="PhoneNumber" placeholder="PhoneNumber"><br>
+
+      <!--It's important that both of these radio button have the same name so they behave as one component (i.e. Only one can be selected at a time)-->  
+      <p>Did you satisfied with our services?</p>
+      <INPUT type="radio" name="service" value="service">yes<BR>
+      <INPUT type="radio" name="service" value="service">No
+      <BR>
+      <BR>
+      <BR>
+        Comment :<BR>        
+        <TEXTAREA rows="6" cols="50" name="commentfield" placeholder="Your Message Or Suggestion"></TEXTAREA>
+        <BR>
+        
+        <BR>
+        <BR>
+        <INPUT TYPE="submit" value="Send Feedback">
+        <INPUT TYPE="reset" value="Reset">
+    </FORM>
+    
+  </BODY>  
+</HTML>
+<style type="text/css">
+  .paddingNavLink {
+    padding-top : 10px;
+  }
+</style>
