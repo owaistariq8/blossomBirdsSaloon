@@ -68,9 +68,8 @@ CREATE TABLE `subscriptions` (
 CREATE TABLE `purchases` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userId` int NOT NULL,
-  `pId` int,
+  `pId` int NOT NULL,
   `status` int,
-  `sId` int,
   `date_added` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `date_updated` DATETIME ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
