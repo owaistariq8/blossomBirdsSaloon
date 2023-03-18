@@ -56,3 +56,22 @@ CREATE TABLE `products` (
   `date_updated` DATETIME ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `subscriptions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `date_added` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` DATETIME ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `purchases` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userId` int NOT NULL,
+  `pId` int,
+  `status` int,
+  `sId` int,
+  `date_added` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` DATETIME ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

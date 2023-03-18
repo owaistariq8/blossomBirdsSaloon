@@ -3,7 +3,6 @@ const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const session = require('express-session');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const multer  = require('multer')
@@ -33,12 +32,6 @@ const APPOINTMENT_TABLE_NAME = "appointments";
 const PRODUCT_TABLE_NAME = "products";
 app.options('*', cors()) // include before other routes
 
-app.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: true
-}));
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -63,7 +56,7 @@ app.post('/signup', (req, res) => {
   console.log(req.body)
   let userName = req.body.username;
   let selectQuery = "SELECT COUNT(id) as userCount FROM "+USER_TABLE_NAME+" WHERE username='"+userName+"' LIMIT 1";
-  con.query(selectQuery,async function(selectErr,selectResult) {
+  con.query(selectQuery,function(selectErr,selectResult) {
     // console.log(selectResult[0].userCount);
     if(selectErr) {
       console.log('MYSQL SELECT ERROR SIGNUP',selectErr);
@@ -112,12 +105,12 @@ app.post('/createService',upload.fields([
       name: 'img4', maxCount: 1
     }
   ]) , (req, res) => {
-  console.log(req.files);
+  console.log("req.files",req.files);
   console.log(req.body);
   let name = req.body.name;
   let price = req.body.price;
   let description = req.body.description;
-  if(!req.files) {
+  if(!req.files || !req.files.img1) {
     res.send({success:"no",message:"Service Images are missing"});
     res.end();
     return;
@@ -128,7 +121,7 @@ app.post('/createService',upload.fields([
   let img4 = req.files.img4;
 
   let selectQuery = "SELECT COUNT(id) as serviceCount FROM "+SERVICE_TABLE_NAME+" WHERE name='"+name+"' LIMIT 1";
-  con.query(selectQuery,async function(selectErr,selectResult) {
+  con.query(selectQuery,function(selectErr,selectResult) {
     // console.log(selectResult[0].shopCount);
     if(selectErr) {
       console.log('MYSQL SELECT ERROR SIGNUP',selectErr);
@@ -186,7 +179,7 @@ app.post('/createService',upload.fields([
 
 })
 
-app.get('/getServices', async function(req, res) {
+app.get('/getServices', function(req, res) {
 
   let selectQuery = "SELECT * FROM "+SERVICE_TABLE_NAME;
   console.log(selectQuery);
@@ -202,7 +195,7 @@ app.get('/getServices', async function(req, res) {
   });
   
 });
-app.get('/cancelAppointment', async function(req, res) {
+app.get('/cancelAppointment', function(req, res) {
   let appointmentId = parseInt(req.query.id);
 
   let deleteQuery = `DELETE FROM ${APPOINTMENT_TABLE_NAME} WHERE id=${appointmentId}`;
@@ -216,7 +209,7 @@ app.get('/cancelAppointment', async function(req, res) {
   
 });
 
-app.get('/getService', async function(req, res) {
+app.get('/getService', function(req, res) {
   let serviceId = parseInt(req.query.id);
   console.log(serviceId);
   console.log(req.params);
@@ -253,7 +246,7 @@ app.post('/updateService',upload.fields([
     }, {
       name: 'img4', maxCount: 1
     }
-  ]), async function(req, res) {
+  ]), function(req, res) {
   let id = parseInt(req.body.id);
   let name = req.body.name;
   let description = req.body.description;
@@ -263,8 +256,6 @@ app.post('/updateService',upload.fields([
   let img2 = req.files.img2;
   let img3 = req.files.img3;
   let img4 = req.files.img4;
-
-  let file = JSON.stringify(req.file);
 
   let selectQuery = "SELECT * FROM "+SERVICE_TABLE_NAME+" WHERE id = '"+id+"' LIMIT 1";
   console.log(selectQuery);
@@ -336,7 +327,7 @@ app.post('/updateService',upload.fields([
   }
 });
 
-app.get('/getProducts', async function(req, res) {
+app.get('/getProducts', function(req, res) {
 
   let selectQuery = "SELECT * FROM "+PRODUCT_TABLE_NAME;
   console.log(selectQuery);
@@ -353,7 +344,7 @@ app.get('/getProducts', async function(req, res) {
   
 });
 
-app.get('/getProduct', async function(req, res) {
+app.get('/getProduct', function(req, res) {
   let productId = parseInt(req.query.id);
   console.log(productId);
   if(productId) {
@@ -400,7 +391,7 @@ app.post('/createProduct',upload.fields([
   let img4 = req.files.img4;
 
   let selectQuery = "SELECT COUNT(id) as productCount FROM "+PRODUCT_TABLE_NAME+" WHERE name='"+name+"' LIMIT 1";
-  con.query(selectQuery,async function(selectErr,selectResult) {
+  con.query(selectQuery,function(selectErr,selectResult) {
     // console.log(selectResult[0].shopCount);
     if(selectErr) {
       console.log('MYSQL SELECT ERROR SIGNUP',selectErr);
@@ -468,7 +459,7 @@ app.post('/updateProduct',upload.fields([
     }, {
       name: 'img4', maxCount: 1
     }
-  ]), async function(req, res) {
+  ]), function(req, res) {
   let id = parseInt(req.body.id);
   let name = req.body.name;
   let description = req.body.description;
@@ -552,7 +543,7 @@ app.post('/updateProduct',upload.fields([
   }
 });
 
-app.post('/createAppointment', async function(req, res) {
+app.post('/createAppointment', function(req, res) {
   let userId = req.body.userId;
   let serviceId = req.body.serviceId;
   let type = req.body.type;
@@ -586,7 +577,7 @@ app.post('/createAppointment', async function(req, res) {
 });
 
 
-app.get('/home', async function(req, res) {
+app.get('/home', function(req, res) {
 
   let selectQuery = "SELECT * FROM "+SERVICE_TABLE_NAME+" limit 9";
   console.log(selectQuery);
@@ -610,7 +601,7 @@ app.get('/home', async function(req, res) {
   
 });
 
-app.post('/updateProfilePictureUser',upload.single('file'), async function(req, res) {
+app.post('/updateProfilePictureUser',upload.single('file'), function(req, res) {
 
   let id = parseInt(req.body.id);
   let selectQuery = "SELECT * FROM "+USER_TABLE_NAME+" WHERE id = '"+id+"' LIMIT 1";
@@ -643,7 +634,7 @@ app.post('/updateProfilePictureUser',upload.single('file'), async function(req, 
   }
 });
 
-app.post('/updateUserProfile', async function(req, res) {
+app.post('/updateUserProfile', function(req, res) {
   let id = parseInt(req.body.id);
   let first_name = req.body.first_name;
   let last_name = req.body.last_name;
@@ -682,7 +673,7 @@ app.post('/updateUserProfile', async function(req, res) {
   }
 });
 
-app.get('/userProfile', async function(req, res) {
+app.get('/userProfile', function(req, res) {
   let id = req.query.id;
   let selectQuery = `SELECT * FROM ${USER_TABLE_NAME} WHERE id = '${id}' LIMIT 1`;
   console.log(selectQuery);
@@ -711,7 +702,7 @@ app.get('/userProfile', async function(req, res) {
 });
 
 
-app.post('/login', async function(req, res) {
+app.post('/login', function(req, res) {
   let username = req.body.username;
   let password = req.body.password;
   let selectQuery = "SELECT * FROM "+USER_TABLE_NAME+" WHERE username = '"+username+"' AND password = '"+password+"' LIMIT 1";
@@ -721,8 +712,6 @@ app.post('/login', async function(req, res) {
       console.log(results);
       if (results && results.length > 0) {
         let user = results[0]; 
-        req.session.loggedin = true;
-        req.session.username = username;
         res.send({success:"yes",message:'loggedin Successfully',user:user});
         res.end();
 
@@ -738,7 +727,7 @@ app.post('/login', async function(req, res) {
 });
 
 
-app.post('/contactUs', async function(req, res) {
+app.post('/contactUs', function(req, res) {
   let email = req.body.email;
   let first_name = req.body.first_name;
   let last_name = req.body.last_name;
@@ -767,13 +756,31 @@ app.post('/contactUs', async function(req, res) {
   }
 });
 
+app.post('/subscriptions', function(req, res) {
+  let email = req.body.email;
+  if (email) {
+    let emailText = `Thank you for the subscriptions we will keep you updated on our new products and services`;
+    transporter.sendMail({
+      from: '"Blossom Bird Saloon Support" <blossombirdsaloon@gmail.com>', // sender address
+      to: email, // list of receivers
+      subject: "Thanks for subscriptions", // Subject line
+      // text: emailText, // plain text body
+      html: emailText, // html body
+    }).then((info)=>{
+      console.log(info);
+      res.send({success:"yes",message:'Email sent Successfully'});
+      res.end();
 
+    }).catch((e)=>{
+      res.send({success:"no",message:'Email Failed'});
+      res.end();
+    });
+  } else {
+    res.send({success:"no",message:'Please enter Email!'});
+    res.end();
+  }
+});
 
-function twoDigits(d) {
-  if(0 <= d && d < 10) return "0" + d.toString();
-  if(-10 < d && d < 0) return "-0" + (-1*d).toString();
-  return d.toString();
-}
 
 app.listen(port,'blossom.saloon.com', () => {
   console.log(`Application listening at http://blossom.saloon.com:${port}`)
