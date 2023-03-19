@@ -55,6 +55,15 @@ con.connect(function(err) {
 app.post('/signup', (req, res) => {
   console.log(req.body)
   let userName = req.body.username;
+  let hashPassword = req.body.password;
+  let rePassword = req.body.rePassword;
+  let phoneNumber = req.body.phonenumber
+  let email = req.body.email;
+  let address = req.body.address;
+  if(!userName || !hashPassword || !email || (hashPassword!=rePassword)) {
+    res.send({success:"no",message:"Invalid Data entered"});
+    return res.end();
+  }
   let selectQuery = "SELECT COUNT(id) as userCount FROM "+USER_TABLE_NAME+" WHERE username='"+userName+"' LIMIT 1";
   con.query(selectQuery,function(selectErr,selectResult) {
     // console.log(selectResult[0].userCount);
@@ -64,10 +73,7 @@ app.post('/signup', (req, res) => {
     else {
       if(selectResult && selectResult.length>0 && selectResult[0].userCount==0) {
         // console.log(req.body);
-        let hashPassword = req.body.password;
-        let phoneNumber = req.body.phonenumber
-        let email = req.body.email;
-        let address = req.body.address;
+        
         let insertQuery = " INSERT INTO "+USER_TABLE_NAME+" (username,email,password,phone_number,address,accessToken) VALUES ('"+userName+"', '"+email+"','"+hashPassword+"','"+phoneNumber+"','"+address+"',NULL)";
 
         con.query(insertQuery, function (err, result) {
