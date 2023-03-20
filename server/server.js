@@ -691,10 +691,17 @@ app.get('/userProfile', function(req, res) {
         let selectQueryAppointments = `SELECT *,a.id as appointmentId FROM ${APPOINTMENT_TABLE_NAME} as a 
           INNER JOIN ${SERVICE_TABLE_NAME} as s ON a.serviceId=s.id WHERE a.userId = '${id}' `;
         con.query(selectQueryAppointments, function(error, appointments) {
+          let selectQueryPurchases = `SELECT * FROM ${PURCHASES_TABLE_NAME} as p 
+            INNER JOIN ${PRODUCT_TABLE_NAME} as pro ON p.pid=pro.id WHERE p.userId = '${id}' `;
           user.appointments = appointments;
+          
+          con.query(selectQueryPurchases, function(error, purchases) {
+            user.purchases = purchases;
 
-          res.send({success:"yes",message:'Profile get Successfully',data:user});
-          res.end();
+            res.send({success:"yes",message:'Profile get Successfully',data:user});
+            res.end();
+          });
+          
         });
       } else {
         res.send({success:"no",message:'No Result Found!'});
@@ -873,6 +880,29 @@ app.get('/userCartItems', function(req, res) {
     res.end();
   }
 });
+
+
+
+app.post('/checkout', function(req, res) {
+  let userId = req.body.userId;
+  if (userId) {
+    let updateQuery = `UPDATE ${PURCHASES_TABLE_NAME} SET status=1 WHERE userId=${userId} `;
+
+    con.query(updateQuery, function(error, purchases) {
+      if (!error) {
+        res.send({success:"yes",message:'success'});
+        res.end();
+      } else {
+        res.send({success:"no",message:'Checkout Failed!'});
+        res.end();
+      }     
+    });
+  } else {
+    res.send({success:"no",message:'Invalid Data!'});
+    res.end();
+  }
+});
+
 
 
 app.listen(port,'blossom.saloon.com', () => {

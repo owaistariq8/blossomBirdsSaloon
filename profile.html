@@ -78,8 +78,8 @@
       	<div class="col-sm-9">
           <ul class="nav nav-tabs">
             <li class="active" style="padding-right: 10px;"><a data-toggle="tab" href="#home">Home</a></li>
-            <li style="padding-right: 10px;"><a data-toggle="tab" href="#messages">Appointments</a></li>
-            <li style="padding-right: 10px;"><a data-toggle="tab" href="#settings">Purchases</a></li>
+            <li style="padding-right: 10px;"><a data-toggle="tab" href="#appointments">Appointments</a></li>
+            <li style="padding-right: 10px;"><a data-toggle="tab" href="#purchases">Purchases</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="home">
@@ -133,9 +133,9 @@
             	</form>
               <hr>
             </div><!--/tab-pane-->
-            <div class="tab-pane" id="messages">
+            <div class="tab-pane" id="appointments">
             </div><!--/tab-pane-->
-            <div class="tab-pane" id="settings">
+            <div class="tab-pane" id="purchases">
             	
             </div><!--/tab-pane-->
           </div><!--/tab-content-->
@@ -369,7 +369,15 @@
             profileUser.appointments.forEach((appointment)=>{
               appointmentHtml+= `<hr><p> <strong>Service </strong>: ${appointment.name} | <strong>Type</strong>: ${appointment.type} | <strong>Price</strong>: Rs ${appointment.price}  | <strong>Date</strong>: ${appointment.date_added} <span class='btn-warning btn cancelAppointment' id='${appointment.appointmentId}'> cancel</span> </p><hr>`;
             })
-            $('#messages').html(appointmentHtml);
+            $('#appointments').html(appointmentHtml);
+          }
+
+          if(profileUser.purchases) {
+            let purchaseHtml = '';
+            profileUser.purchases.forEach((purchase)=>{
+              purchaseHtml+= `<hr><p> <strong>Product </strong>: ${purchase.name} | <strong>Price</strong>: Rs ${purchase.price}  | <strong>Date</strong>: ${purchase.date_added}</p><hr>`;
+            })
+            $('#purchases').html(purchaseHtml);
           }
 
         }
