@@ -863,7 +863,7 @@ app.get('/userCartItems', function(req, res) {
   if (userId) {
     let selectQuery = `SELECT * FROM ${PURCHASES_TABLE_NAME} as purchase 
       LEFT JOIN ${PRODUCT_TABLE_NAME} as product
-      ON purchase.pId = product.id WHERE userId=${userId} `;
+      ON purchase.pId = product.id WHERE userId=${userId} AND purchase.status=0 `;
 
     con.query(selectQuery, function(error, purchases) {
       console.log(purchases);
@@ -889,6 +889,27 @@ app.post('/checkout', function(req, res) {
     let updateQuery = `UPDATE ${PURCHASES_TABLE_NAME} SET status=1 WHERE userId=${userId} `;
 
     con.query(updateQuery, function(error, purchases) {
+      if (!error) {
+        res.send({success:"yes",message:'success'});
+        res.end();
+      } else {
+        res.send({success:"no",message:'Checkout Failed!'});
+        res.end();
+      }     
+    });
+  } else {
+    res.send({success:"no",message:'Invalid Data!'});
+    res.end();
+  }
+});
+
+app.post('/removeFromCart', function(req, res) {
+  let purchaseId = req.body.purchaseId;
+  let userId = req.body.userId;
+  if (purchaseId && userId) {
+    let deleteQuery = `DELETE FROM ${PURCHASES_TABLE_NAME} WHERE pId=${purchaseId} AND userId=${userId}`;
+    console.log(deleteQuery);
+    con.query(deleteQuery, function(error, purchases) {
       if (!error) {
         res.send({success:"yes",message:'success'});
         res.end();

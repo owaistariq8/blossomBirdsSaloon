@@ -84,12 +84,13 @@
           <span class="badge badge-secondary badge-pill">0</span>
         </h4>
         <ul class="list-group mb-3 purchases">
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
+          <!-- <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div style="width: 80%;">
               <h6 class="my-0">Product name</h6>
               <small class="text-muted">Brief description</small>
             </div>
             <span class="text-muted">$12</span>
+            <i class="fa fa-trash" style="color:red"></i>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
@@ -105,17 +106,17 @@
             </div>
             <span class="text-muted">$5</span>
           </li>
-         <!--  <li class="list-group-item d-flex justify-content-between bg-light">
+          <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
               <h6 class="my-0">Promo code</h6>
               <small>EXAMPLECODE</small>
             </div>
             <span class="text-success">-$5</span>
-          </li> -->
+          </li> 
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (USD)</span>
             <strong>$20</strong>
-          </li>
+          </li> --> 
         </ul>
 
         <!-- <form class="card p-2">
@@ -432,11 +433,13 @@
               purchases.forEach((purchase,index)=>{
                 purchasesHtml+= `
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
+                  <div style="width: 80%;">
                     <h6 class="my-0">${purchase.name}</h6>
                     <small class="text-muted">${purchase.description}</small>
                   </div>
                   <span class="text-muted">${purchase.price}</span>
+                  <i class="deleteBtn fa fa-trash" pid='${purchase.id}' style="color:red"></i>
+
                 </li>`;
                 totalAmount+= parseInt(purchase.price);
               })
@@ -450,13 +453,33 @@
 
           }
           else {
-            alert(result.message)
+            alert(result.message);
+            window.location.href = '/'
           }
 
         },
         dataType: 'json'
       });
 
+      $(document).on('click','.deleteBtn',function() {
+        let purchaseId = $(this).attr('pid');
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:5000/removeFromCart',
+          data:{ purchaseId, userId:user.id },
+          success: function(result){
+            console.log(result);
+            if(result && result.success=='yes') {
+              window.location.reload();
+            }
+            else {
+              alert(result.message)
+            }
+
+          },
+          dataType: 'json'
+        });
+      })
       $(document).on('click','#checkOut',function(){
         $.ajax({
           type: "POST",
