@@ -692,7 +692,7 @@ app.get('/userProfile', function(req, res) {
           INNER JOIN ${SERVICE_TABLE_NAME} as s ON a.serviceId=s.id WHERE a.userId = '${id}' `;
         con.query(selectQueryAppointments, function(error, appointments) {
           let selectQueryPurchases = `SELECT * FROM ${PURCHASES_TABLE_NAME} as p 
-            INNER JOIN ${PRODUCT_TABLE_NAME} as pro ON p.pid=pro.id WHERE p.userId = '${id}' `;
+            INNER JOIN ${PRODUCT_TABLE_NAME} as pro ON p.pid=pro.id WHERE p.userId = '${id}' AND p.status=1`;
           user.appointments = appointments;
           
           con.query(selectQueryPurchases, function(error, purchases) {
@@ -802,7 +802,6 @@ app.post('/addToCart', function(req, res) {
     let selectQuery = `SELECT id from ${PRODUCT_TABLE_NAME} WHERE id=${productId} `;
 
     con.query(selectQuery, function(error, results) {
-      console.log(results);
       if (results && results.length > 0) {
         
         let selectQuery = `SELECT id from ${PURCHASES_TABLE_NAME} WHERE pid=${productId} AND userId=${userId} AND status=0`;
@@ -843,7 +842,6 @@ app.get('/countCartItems', function(req, res) {
     let selectQuery = `SELECT count(*) as total FROM ${PURCHASES_TABLE_NAME} WHERE userId=${userId} AND status=0`;
 
     con.query(selectQuery, function(error, results) {
-      console.log(results);
       if (results && results.length > 0) {
         res.send({success:"yes",message:'cart count',count:results[0]['total']});
         res.end();
@@ -866,7 +864,6 @@ app.get('/userCartItems', function(req, res) {
       ON purchase.pId = product.id WHERE userId=${userId} AND purchase.status=0 `;
 
     con.query(selectQuery, function(error, purchases) {
-      console.log(purchases);
       if (purchases && purchases.length > 0) {
         res.send({success:"yes",message:'success',purchases});
         res.end();
