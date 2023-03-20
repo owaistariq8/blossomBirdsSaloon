@@ -30,6 +30,7 @@ const USER_TABLE_NAME = "users";
 const SERVICE_TABLE_NAME = "services";
 const APPOINTMENT_TABLE_NAME = "appointments";
 const PRODUCT_TABLE_NAME = "products";
+const PURCHASES_TABLE_NAME = "purchases";
 app.options('*', cors()) // include before other routes
 
 
@@ -783,6 +784,38 @@ app.post('/subscriptions', function(req, res) {
     });
   } else {
     res.send({success:"no",message:'Please enter Email!'});
+    res.end();
+  }
+});
+
+app.post('/addToCart', function(req, res) {
+  let productId = req.body.productId;
+  let userId = req.body.userId;
+  if (userId && productId) {
+    let selectQuery = `SELECT id from ${PRODUCT_TABLE_NAME} WHERE id=${productId}`;
+
+    con.query(selectQuery, function(error, results) {
+      console.log(results);
+      if (results && results.length > 0) {
+        
+        let insertQuery = `INSERT INTO ${PURCHASES_TABLE_NAME} (userId,pId,status) VALUES ('${userId}','${productId}',0)`;
+        con.query(insertQuery, function(error, results) {
+          if(!error) {
+            res.send({success:"yes",message:'Product added in cart'});
+            res.end();
+          } else {
+            console.log(error);
+            res.send({success:"no",message:'ERROR !'});
+            res.end();
+          }  
+        });
+      } else {
+        res.send({success:"no",message:'product not found!'});
+        res.end();
+      }     
+    });
+  } else {
+    res.send({success:"no",message:'Invalid Data!'});
     res.end();
   }
 });

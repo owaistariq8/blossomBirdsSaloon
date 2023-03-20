@@ -274,11 +274,12 @@
   </footer>
   <!-- Footer -->
   <script type="text/javascript">
+    let user;
     $(document).ready(function (){
       let queryString = getUrlVars();
       let isLoggedIn = $.cookie("loggedIn");
       if(isLoggedIn) {
-        let user = JSON.parse($.cookie('user'));
+        user = JSON.parse($.cookie('user'));
         $('#username').html(user.username)
         $("#profileLink").prop('href','profile.html?id='+user.id)
         // window.location.href = '/profile.html?id='+user.id;
@@ -290,6 +291,22 @@
         else {
           $('.adminLinks').hide();
         }
+
+         $(document).on('click','.addCart',function() {
+          let productId = $(this).attr('pid');
+          if(!productId)
+            return alert('Invalid product')
+          $.ajax({
+            type: "POST",
+            url: 'http://localhost:5000/addToCart',
+            data: { productId , userId:user.id},
+            success: function(result){
+              console.log(result);
+              
+            },
+            dataType: 'json'
+          });
+        });
       }
       else{
         $(".loggedIn").hide();
@@ -349,6 +366,7 @@
                 </div>
                 <div class="card-footer">
                   <a href="appointment.html?id=${val.id}" class="btn btn-primary">Read More</a>
+
                 </div>
               </div>`;
 
@@ -378,11 +396,16 @@
                 <div class="card-body">
                   <h5 class="card-title">${val.name}</h5>
                   <p class="card-text"> ${val.description}</p>
-                </div>
-                <div class="card-footer">
-                  <a href="appointment.html?id=${val.id}" class="btn btn-primary">Read More</a>
-                </div>
-              </div>`;
+                </div>`;
+
+                if(user && user.id) {
+
+                  productsHtml+=`<div class="card-footer">
+                    <a href="javascript:void(0);" pid='${val.id}' class="addCart btn btn-primary">Add To Cart</a>
+                  </div>`;
+                }
+
+              productsHtml+=`</div>`;
 
 
               count++
@@ -398,6 +421,7 @@
       dataType: 'json'
     });
 
+   
     function getUrlVars()
     {
         var vars = [], hash;
