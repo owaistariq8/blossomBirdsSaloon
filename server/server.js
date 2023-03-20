@@ -792,23 +792,33 @@ app.post('/addToCart', function(req, res) {
   let productId = req.body.productId;
   let userId = req.body.userId;
   if (userId && productId) {
-    let selectQuery = `SELECT id from ${PRODUCT_TABLE_NAME} WHERE id=${productId}`;
+    let selectQuery = `SELECT id from ${PRODUCT_TABLE_NAME} WHERE id=${productId} `;
 
     con.query(selectQuery, function(error, results) {
       console.log(results);
       if (results && results.length > 0) {
         
-        let insertQuery = `INSERT INTO ${PURCHASES_TABLE_NAME} (userId,pId,status) VALUES ('${userId}','${productId}',0)`;
-        con.query(insertQuery, function(error, results) {
-          if(!error) {
-            res.send({success:"yes",message:'Product added in cart'});
+        let selectQuery = `SELECT id from ${PURCHASES_TABLE_NAME} WHERE pid=${productId} AND userId=${userId} AND status=0`;
+        con.query(selectQuery, function(error, results) {
+          if (results && results.length == 0) {
+            let insertQuery = `INSERT INTO ${PURCHASES_TABLE_NAME} (userId,pId,status) VALUES ('${userId}','${productId}',0)`;
+            con.query(insertQuery, function(error, results) {
+              if(!error) {
+                res.send({success:"yes",message:'Product added in cart'});
+                res.end();
+              } else {
+                console.log(error);
+                res.send({success:"no",message:'ERROR !'});
+                res.end();
+              }  
+            });
+          }
+          else {
+            res.send({success:"no",message:'Product Already in cart!'});
             res.end();
-          } else {
-            console.log(error);
-            res.send({success:"no",message:'ERROR !'});
-            res.end();
-          }  
-        });
+          }
+
+        })
       } else {
         res.send({success:"no",message:'product not found!'});
         res.end();
@@ -840,6 +850,30 @@ app.get('/countCartItems', function(req, res) {
     res.end();
   }
 });
+
+app.get('/userCartItems', function(req, res) {
+  let userId = req.query.userId;
+  if (userId) {
+    let selectQuery = `SELECT * FROM ${PURCHASES_TABLE_NAME} as purchase 
+      LEFT JOIN ${PRODUCT_TABLE_NAME} as product
+      ON purchase.pId = product.id WHERE userId=${userId} `;
+
+    con.query(selectQuery, function(error, purchases) {
+      console.log(purchases);
+      if (purchases && purchases.length > 0) {
+        res.send({success:"yes",message:'success',purchases});
+        res.end();
+      } else {
+        res.send({success:"no",message:'Purchases not found!'});
+        res.end();
+      }     
+    });
+  } else {
+    res.send({success:"no",message:'Invalid Data!'});
+    res.end();
+  }
+});
+
 
 app.listen(port,'blossom.saloon.com', () => {
   console.log(`Application listening at http://blossom.saloon.com:${port}`)

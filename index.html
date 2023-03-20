@@ -321,7 +321,8 @@
             data: { productId , userId:user.id},
             success: function(result){
               console.log(result);
-              
+              if(result.success=='no')
+                alert(result.message)
             },
             dataType: 'json'
           });
@@ -417,6 +418,7 @@
                   <p class="card-text"> ${val.description}</p>
                 </div>`;
 
+                console.log(user);
                 if(user && user.id) {
 
                   productsHtml+=`<div class="card-footer">
