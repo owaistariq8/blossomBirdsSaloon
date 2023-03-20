@@ -303,3 +303,17 @@ gap: 20px;
     background-color: goldenrod;
 } 
 
+
+
+.badge:after{
+    content:attr(value) !important;
+    font-size:12px !important;
+    color: #fff !important;
+    background: red !important;
+    border-radius:50% !important;
+    padding: 0 5px !important;
+    position:relative !important;
+    left:-8px !important;
+    top:-10px !important ;
+    opacity:0.9 !important;
+}

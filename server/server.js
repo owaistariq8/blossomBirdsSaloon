@@ -820,6 +820,26 @@ app.post('/addToCart', function(req, res) {
   }
 });
 
+app.get('/countCartItems', function(req, res) {
+  let userId = req.query.userId;
+  if (userId ) {
+    let selectQuery = `SELECT count(*) as total FROM ${PURCHASES_TABLE_NAME} WHERE userId=${userId} AND status=0`;
+
+    con.query(selectQuery, function(error, results) {
+      console.log(results);
+      if (results && results.length > 0) {
+        res.send({success:"yes",message:'cart count',count:results[0]['total']});
+        res.end();
+      } else {
+        res.send({success:"no",message:'product not found!'});
+        res.end();
+      }     
+    });
+  } else {
+    res.send({success:"no",message:'Invalid Data!'});
+    res.end();
+  }
+});
 
 app.listen(port,'blossom.saloon.com', () => {
   console.log(`Application listening at http://blossom.saloon.com:${port}`)
