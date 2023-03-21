@@ -69,7 +69,7 @@
                 <img src="images/hair.jpg"  class="avatar img-thumbnail"  alt="avatar"/>
                 <input type="file" name='img1' id='img1'  class="text-center center-block file-upload productPicture"/>
               </div>
-              <div class="columnImg">
+              <!-- <div class="columnImg">
                 <img src="images/hair.jpg"  class="avatar img-thumbnail"  alt="avatar"/>
                 <input type="file" name='img2' id='img2'  class="text-center center-block file-upload productPicture"/>
               </div>
@@ -80,7 +80,7 @@
               <div class="columnImg">
                 <img src="images/hair.jpg"  class="avatar img-thumbnail"  alt="avatar"/>
                 <input type="file" name='img4' id='img4'  class="text-center center-block file-upload productPicture"/>
-              </div>
+              </div> -->
             </div>
           </div><!--/col-3-->
           <div class="col-sm-12">
@@ -317,18 +317,8 @@
             $('#price').val(product.price);
             $('.id').val(product.id)
             product.img1 = product.img1.replace(/\\/g, '/');
-            product.img2 = product.img2.replace(/\\/g, '/');
-            product.img3 = product.img3.replace(/\\/g, '/');
-            product.img4 = product.img4.replace(/\\/g, '/');
             let image1 = JSON.parse(product.img1);
-            let image2 = JSON.parse(product.img2);
-            let image3 = JSON.parse(product.img3);
-            let image4 = JSON.parse(product.img4);
-            console.log('server/'+image1.path);
             $("#img1").parent().find('img').prop('src','server/'+image1.path);
-            $("#img2").parent().find('img').prop('src','server/'+image2.path);
-            $("#img3").parent().find('img').prop('src','server/'+image3.path);
-            $("#img4").parent().find('img').prop('src','server/'+image4.path);
           }
           else {
             alert(result.message)
@@ -340,14 +330,7 @@
 
         const formData = new FormData();
         let img1 = $("#img1").prop('files')[0];
-        console.log($("#img1"),img1);
-        let img2 = $("#img2").prop('files')[0];
-        let img3 = $("#img3").prop('files')[0];
-        let img4 = $("#img4").prop('files')[0];
         formData.append("img1", img1);
-        formData.append("img2", img2);
-        formData.append("img3", img3);
-        formData.append("img4", img4);
         formData.append("id", productId);
         formData.append("name", $("#pname").val());
         formData.append("description", $("#description").val());
@@ -378,14 +361,7 @@
 
         const formData = new FormData();
         let img1 = $("#img1").prop('files')[0];
-        console.log($("#img1"),img1);
-        let img2 = $("#img2").prop('files')[0];
-        let img3 = $("#img3").prop('files')[0];
-        let img4 = $("#img4").prop('files')[0];
         formData.append("img1", img1);
-        formData.append("img2", img2);
-        formData.append("img3", img3);
-        formData.append("img4", img4);
         formData.append("name", $("#pname").val());
         formData.append("description", $("#description").val());
         formData.append("price", $("#price").val());

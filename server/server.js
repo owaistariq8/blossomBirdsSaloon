@@ -379,12 +379,6 @@ app.get('/getProduct', function(req, res) {
 app.post('/createProduct',upload.fields([
     {
       name: 'img1', maxCount: 1
-    }, {
-      name: 'img2', maxCount: 1
-    }, {
-      name: 'img3', maxCount: 1
-    }, {
-      name: 'img4', maxCount: 1
     }
   ]) , (req, res) => {
   console.log(req.files);
@@ -393,10 +387,6 @@ app.post('/createProduct',upload.fields([
   let price = req.body.price;
   let description = req.body.description;
   let img1 = req.files.img1;
-  let img2 = req.files.img2;
-  let img3 = req.files.img3;
-  let img4 = req.files.img4;
-
   let selectQuery = "SELECT COUNT(id) as productCount FROM "+PRODUCT_TABLE_NAME+" WHERE name='"+name+"' LIMIT 1";
   con.query(selectQuery,function(selectErr,selectResult) {
     // console.log(selectResult[0].shopCount);
@@ -412,27 +402,10 @@ app.post('/createProduct',upload.fields([
           img1 = "";
         }
 
-        try{
-          img2 = JSON.stringify(req.files.img2[0]);
-        }catch(e) {
-          img2 = "";
-        }
-
-        try{
-          img3 = JSON.stringify(req.files.img3[0]);
-        }catch(e) {
-          img3 = "";
-        }
-
-        try{
-          img4 = JSON.stringify(req.files.img4[0]);
-        }catch(e) {
-          img4 = "";
-        }
-
+ 
         var insertQuery = " INSERT INTO "+PRODUCT_TABLE_NAME;
-        insertQuery+= " (name,price,description,img1,img2,img3,img4) ";
-        insertQuery+= " VALUES ('"+name+"',"+price+",'"+description+"','"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
+        insertQuery+= " (name,price,description,img1) ";
+        insertQuery+= " VALUES ('"+name+"',"+price+",'"+description+"','"+img1+"')";
         con.query(insertQuery, function (err, result) {
           if (err){
             // throw err;
@@ -459,12 +432,6 @@ app.post('/createProduct',upload.fields([
 app.post('/updateProduct',upload.fields([
     {
       name: 'img1', maxCount: 1
-    }, {
-      name: 'img2', maxCount: 1
-    }, {
-      name: 'img3', maxCount: 1
-    }, {
-      name: 'img4', maxCount: 1
     }
   ]), function(req, res) {
   let id = parseInt(req.body.id);
@@ -473,11 +440,6 @@ app.post('/updateProduct',upload.fields([
   let price = req.body.price;
 
   let img1 = req.files.img1;
-  let img2 = req.files.img2;
-  let img3 = req.files.img3;
-  let img4 = req.files.img4;
-
-  let file = JSON.stringify(req.file);
 
   let selectQuery = "SELECT * FROM "+PRODUCT_TABLE_NAME+" WHERE id = '"+id+"' LIMIT 1";
   console.log(selectQuery);
@@ -491,24 +453,6 @@ app.post('/updateProduct',upload.fields([
           img1 = "";
         }
 
-        try{
-          img2 = JSON.stringify(req.files.img2[0]);
-        }catch(e) {
-          img2 = "";
-        }
-
-        try{
-          img3 = JSON.stringify(req.files.img3[0]);
-        }catch(e) {
-          img3 = "";
-        }
-
-        try{
-          img4 = JSON.stringify(req.files.img4[0]);
-        }catch(e) {
-          img4 = "";
-        }
-
         let user = results[0]; 
         let updateQuery = `UPDATE ${PRODUCT_TABLE_NAME} SET name='${name}'`;
         updateQuery+=`,description='${description}',price='${price}'`;
@@ -516,15 +460,6 @@ app.post('/updateProduct',upload.fields([
 
         if(img1 && img1!="")
           updateQuery+=`,img1='${img1}'`;
-        
-        if(img2 && img2!="")
-          updateQuery+=`,img2='${img2}'`;
-
-        if(img3 && img3!="")
-          updateQuery+=`,img3='${img3}'`;
-
-        if(img4 && img4!="")
-          updateQuery+=`,img4='${img4}'`;
         
         console.log(updateQuery);
         

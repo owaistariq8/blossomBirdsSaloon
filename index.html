@@ -29,10 +29,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <form class="d-flex" style="margin-left: 26%;">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-            <button type="button" class="btn btn-secondary">
-              <span class="fa fa-search"></span>
-            </button>
+            
           </form>
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 25%;">
@@ -71,6 +68,9 @@
             </li>
             <li class="nav-item login" >
               <a class="nav-link"  href="login.html">SignIn</a>
+            </li>
+             <li class="nav-item login" >
+              <a class="nav-link"  href="signup.html">Signup</a>
             </li>
           </ul>
         </div>
@@ -174,7 +174,7 @@
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
             <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fa fa-gem me-3"></i>Blosom Bird
+              <i class=""></i>Blosom Bird
             </h6>
             <p>
               We are a Multi grant-winning Beauty salon, situated in Lahore, Pakistan. Our great group of staff and specialists are accessible to enable you to feel good and quiet in our wonderful salon.
@@ -421,7 +421,9 @@
               }
               productsHtml+= `
               <div class="card serviceCard">
-                <img class="card-img-top serviceImgHome" src="server/${image.path}" alt="Card image cap">
+                <a href='/addProduct.html?id=${val.id}'>
+                  <img class="card-img-top serviceImgHome" src="server/${image.path}" alt="Card image cap">
+                </a>
                 <div class="card-body">
                   <h5 class="card-title">${val.name}</h5>
                   <p class="card-text"> ${val.description}</p>
