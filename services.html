@@ -258,7 +258,9 @@
               }
               servicesHtml+= `
               <div class="card serviceCard">
-                <img class="card-img-top serviceImgHome" src="server/${image.path}" alt="Card image cap">
+                <a href='/addService.html?id=${val.id}'>
+                  <img class="card-img-top serviceImgHome" src="server/${image.path}" alt="Card image cap">
+                </a>
                 <div class="card-body">
                   <h5 class="card-title">${val.name}</h5>
                   <p class="card-text"> ${val.description}</p>

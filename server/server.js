@@ -46,8 +46,8 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+  res.send('Hello World!');
+});
 con.connect(function(err) {
   if (err) throw err;
   console.log("MySQL Connected!");
@@ -56,12 +56,12 @@ con.connect(function(err) {
 app.post('/signup', (req, res) => {
   console.log(req.body)
   let userName = req.body.username;
-  let hashPassword = req.body.password;
+  let password = req.body.password;
   let rePassword = req.body.rePassword;
   let phoneNumber = req.body.phonenumber
   let email = req.body.email;
   let address = req.body.address;
-  if(!userName || !hashPassword || !email || (hashPassword!=rePassword)) {
+  if(!userName || !password || !email || (password!=rePassword)) {
     res.send({success:"no",message:"Invalid Data entered"});
     return res.end();
   }
@@ -75,7 +75,7 @@ app.post('/signup', (req, res) => {
       if(selectResult && selectResult.length>0 && selectResult[0].userCount==0) {
         // console.log(req.body);
         
-        let insertQuery = " INSERT INTO "+USER_TABLE_NAME+" (username,email,password,phone_number,address,accessToken) VALUES ('"+userName+"', '"+email+"','"+hashPassword+"','"+phoneNumber+"','"+address+"',NULL)";
+        let insertQuery = " INSERT INTO "+USER_TABLE_NAME+" (username,email,password,phone_number,address) VALUES ('"+userName+"', '"+email+"','"+password+"','"+phoneNumber+"','"+address+"')";
 
         con.query(insertQuery, function (err, result) {
           if (err){
@@ -112,12 +112,11 @@ app.post('/createService',upload.fields([
       name: 'img4', maxCount: 1
     }
   ]) , (req, res) => {
-  console.log("req.files",req.files);
   console.log(req.body);
   let name = req.body.name;
   let price = req.body.price;
   let description = req.body.description;
-  if(!req.files || !req.files.img1) {
+  if(!req.files || !req.files.img1 || !req.files.img2 || !req.files.img3 || !req.files.img4) {
     res.send({success:"no",message:"Service Images are missing"});
     res.end();
     return;
@@ -166,8 +165,8 @@ app.post('/createService',upload.fields([
         con.query(insertQuery, function (err, result) {
           if (err){
             // throw err;
-            console.log('Signup MYSQL ERROR',err)
-            res.send({success:"no",message:"Signup Failed"});
+            console.log('Create Service MYSQL ERROR',err)
+            res.send({success:"no",message:"Create Service Failed"});
             res.end();
           } 
           else {
@@ -309,7 +308,8 @@ app.post('/updateService',upload.fields([
 
         if(img4 && img4!="")
           updateQuery+=`,img4='${img4}'`;
-            
+        
+        updateQuery+=` WHERE id = ${id} `;
         console.log(updateQuery);
         
         con.query(updateQuery, function(error, results) {
@@ -457,10 +457,11 @@ app.post('/updateProduct',upload.fields([
         let updateQuery = `UPDATE ${PRODUCT_TABLE_NAME} SET name='${name}'`;
         updateQuery+=`,description='${description}',price='${price}'`;
 
-
         if(img1 && img1!="")
           updateQuery+=`,img1='${img1}'`;
         
+
+        updateQuery+=` WHERE id = ${id} `;
         console.log(updateQuery);
         
         con.query(updateQuery, function(error, results) {
